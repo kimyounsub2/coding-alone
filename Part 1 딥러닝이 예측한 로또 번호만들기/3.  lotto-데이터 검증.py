@@ -72,8 +72,8 @@ train_acc = []
 val_loss = []
 val_acc = []
 
-# 최대 100번 에포크까지 수행
-for epoch in range(100):
+# 최대 100번 에포크까지 수행해서 학습을 시킨다.
+for epoch in range(100): 
 
     model.reset_states() # 중요! 매 에포크마다 1회부터 다시 훈련하므로 상태 초기화 필요
 
@@ -110,3 +110,25 @@ for epoch in range(100):
     val_acc.append(np.mean(batch_val_acc))
 
     print('epoch {0:4d} train acc {1:0.3f} loss {2:0.3f} val acc {3:0.3f} loss {4:0.3f}'.format(epoch, np.mean(batch_train_acc), np.mean(batch_train_loss), np.mean(batch_val_acc), np.mean(batch_val_loss)))
+    
+
+import matplotlib.pyplot as plt
+
+fig, loss_ax = plt.subplots()
+
+acc_ax = loss_ax.twinx()
+
+loss_ax.plot(train_loss, 'y', label='train loss')
+loss_ax.plot(val_loss, 'r', label='val loss')
+
+acc_ax.plot(train_acc, 'b', label='train acc')
+acc_ax.plot(val_acc, 'g', label='val acc')
+
+loss_ax.set_xlabel('epoch')
+loss_ax.set_ylabel('loss')
+acc_ax.set_ylabel('accuray')
+
+loss_ax.legend(loc='upper left')
+acc_ax.legend(loc='lower left')
+
+plt.show()
