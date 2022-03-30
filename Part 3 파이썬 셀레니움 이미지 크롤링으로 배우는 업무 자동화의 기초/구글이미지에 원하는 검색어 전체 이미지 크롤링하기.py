@@ -17,7 +17,7 @@ SCROLL_PAUSE_SEC = 1
 last_height = driver.execute_script("return document.body.scrollHeight")
 
 while True:
-     # 끝까지 스크롤 다운
+    # 끝까지 스크롤 다운
     driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
     # 1초 대기
