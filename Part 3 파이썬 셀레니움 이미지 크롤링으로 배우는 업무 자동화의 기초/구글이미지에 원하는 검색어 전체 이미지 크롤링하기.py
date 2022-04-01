@@ -4,7 +4,7 @@ from selenium.webdriver.common.keys import Keys # 해당사이트에서 검색 �
 import time # 조회 후 로딩시간을 기다려주기 위해
 import urllib.request # 이미지 주소를 받기 위해
 
-driver = webdriver.Chrome('C:/Users/김윤섭/Downloads/chromedriver_win32/chromedriver.exe')
+driver = webdriver.Chrome('C:/chromedriver_win32/chromedriver')
 driver.get("https://www.google.co.kr/imghp?hl=ko&tab=ri&ogbl")
 elem = driver.find_element_by_name("q")
 elem.send_keys("아스날")
