@@ -21,7 +21,7 @@ button = driver.find_element_by_xpath('//*[@id="__next"]/div[2]/div/div[1]/div/d
 button.click()
 time.sleep(4)
 
-click = driver.find_element_by_xpath("/html/body/div[1]/div[2]/div/div[2]/div/div/div[2]/div/div/div[5]/div/div/div/div")
+
 
 link = driver.find_elements_by_css_selector(".css-1dbjc4n.r-14lw9ot.r-eqz5dr")
 
@@ -35,7 +35,7 @@ for property_books in link:
 
     #soup.select('상위태그명.클래스명 > 하위태그명.클래스명') 
     #soup.select('#아이디명 > 태그명.클래스명)
-    price = driver.find_element_by_class_name("css-1dbjc4n r-glunga").text
+    price = driver.find_element_by_css_selector(".css-1dbjc4n.r-glunga").text
     address = soup.select_one('#__next > div._app__Body-sc-1jr99cl-0.bQXLct > div > div.AptMapOfferLayoutStyle__DetailArea-sc-10mw0f7-2.RnHiG > div > div:nth-child(3) > div:nth-child(1) > div.css-1563yu1.css-vcwn7f')
     park = driver.find_element_by_css_selector(".css-1dbjc4n.r-13awgt0.r-1mlwlqe.r-eqz5dr").text
     Elevator = soup.select_one("#__next > div._app__Body-sc-1jr99cl-0.bQXLct > div > div.AptMapOfferLayoutStyle__DetailArea-sc-10mw0f7-2.RnHiG > div > div:nth-child(3) > div:nth-child(2) > div.css-1dbjc4n.r-150rngu.r-eqz5dr.r-16y2uox.r-1wbh5a2.r-11yh6sk.r-1rnoaur.r-1sncvnh > div > div:nth-child(4) > div > div.css-1dbjc4n.r-14lw9ot > div:nth-child(2) > div > div > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > div")
