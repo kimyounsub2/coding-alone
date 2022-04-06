@@ -12,6 +12,8 @@ driver.get("https://hogangnono.com/")
 html = driver.page_source
 soup = BeautifulSoup(html)
 
+
+
 search = driver.find_element_by_class_name("keyword")
 name = search.send_keys("광명시")
 time.sleep(2)
@@ -22,12 +24,13 @@ link = driver.execute_script("arguments[0].click();", button)
 time.sleep(4)
 
 # 상위클래스를 찾고 하위 태그로 연결 
-parentElement = driver.find_element_by_class_name("search-list.apt-list")
+parentElement = driver.find_element_by_css_selector(".search-list.apt-list")
 elementList = parentElement.find_elements_by_tag_name("a")
 
 
-for property_books in elementList:
-    driver.execute_script("arguments[0].click();", property_books)
+
+for property_book in elementList:
+    driver.execute_script("arguments[0].click();", property_book)
     time.sleep(4)
     
     
@@ -49,5 +52,11 @@ for property_books in elementList:
         for propertys in property_all:
             file.write(f"{propertys}\n")
     time.sleep(4)
+    
+    
+    
+    
+    # backtitle = driver.find_element_by_class_name("btn-back")
+    # back = backtitle.find_element_by_tag_name("span")
+    # driver.execute_script("arguments[0].click();", back)
             
-time.sleep(50)

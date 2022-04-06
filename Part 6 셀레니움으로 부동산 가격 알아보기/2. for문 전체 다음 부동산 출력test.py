@@ -25,6 +25,7 @@ time.sleep(4)
 
 link = driver.find_elements_by_css_selector(".css-1dbjc4n.r-14lw9ot.r-eqz5dr")
 
+
 for property_books in link:
     driver.execute_script("arguments[0].click();", property_books)
     time.sleep(4)
@@ -33,29 +34,23 @@ for property_books in link:
     driver.execute_script("arguments[0].click();", details)
     time.sleep(3)
 
-    #soup.select('상위태그명.클래스명 > 하위태그명.클래스명') 
-    #soup.select('#아이디명 > 태그명.클래스명)
-    price_title = driver.find_element_by_css_selector(".css-1dbjc4n.r-glunga")
-    price = price_title.find_element_by_class_name("css-1563yu1").text
-    address_title = driver.find_element_by_css_selector(".css-1dbjc4n.r-13awgt0.r-1mlwlqe.r-eqz5dr")
-    address = address_title.find_element_by_class_name('css-1563yu1').text
-    
+    # 여기서 for문 다음것을 가져오지 못함
+    price_titel = driver.find_element_by_class_name("#css-1dbjc4n r-14lw9ot r-eqz5dr").text 
+    print(price_titel)
 # for imgurl in img:
 #     imgurl['src']
 
 # imgurl = img.get_attribute("src")
- 
-    property_all = [
-        {
-        "매매" : price,
-        "주소" : address,
-        }
-    ]
+    # a = {}
+    # propertys_all = {
+    #     "매매" : price_titel
+    # }
+    
     
             
-    with open("property.csv", mode="a", encoding='UTF-8') as file:
-        for propertys in property_all:
-            file.write(f"{propertys}\n")
+    # with open("property.csv", mode="a", encoding='UTF-8') as file:
+    #     for propertys in propertys_all:
+    #         file.write(f"{propertys}\n")
 
             
     
