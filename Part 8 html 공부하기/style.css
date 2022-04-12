@@ -1,0 +1,88 @@
+*{
+    font-family: 'Nanum Myeongjo',sans-serif;
+    list-style: none;
+    text-decoration: none;
+    border-collapse: collapse;
+    margin: 0px;
+    padding: 0px;
+    color: black;
+}
+
+.intro_bg{
+    background-image:url("image/intro.png");
+    width: 100%;
+    height: 718px;
+}
+.text{
+    margin-top: 250px;
+    text-align: center;
+}
+.text > h1{
+    color: white;
+    font-weight: normal;
+}
+
+.text > h4{
+    color: white;
+    font-weight: normal;
+}
+
+.header{
+    display: flex;
+    width: 1280px;
+    margin: auto;
+    height: 86px;
+}
+
+.searchArea{
+    width: 300px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    margin-top: 24px;
+}
+
+.searchArea > form > input{
+    border: none;
+    font-weight: bolder;
+    padding: 10px;
+    width: 250px;
+    height: 40px;
+    color: white;
+    background: rgba(0, 0, 0, 0);
+}
+.searchArea > form > span{
+    width: 50px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.nav{
+    font-weight:bolder;
+    display: flex;
+    line-height: 86px;
+    justify-content: flex-end;
+    width: calc(1280px - 300px);
+    
+}
+
+.nav > li{
+    margin-left: 84px;
+}
+
+.nav > li > a {
+    color: white;
+}
+
+.intro_second{
+    background-color:lightsteelblue;
+    width: 100%;
+    height: 601px;
+}
+
+.intro_third{
+    background-color: white;
+    width: 100%;
+    height: 659px;
+}
