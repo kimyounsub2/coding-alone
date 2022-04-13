@@ -76,7 +76,7 @@
 }
 
 .intro_second{
-    background-color:lightsteelblue;
+    background-color:#F1F2F3;
     width: 100%;
     height: 601px;
 }
@@ -85,4 +85,114 @@
     background-color: white;
     width: 100%;
     height: 659px;
+}
+
+.middle {
+    display: flex;
+    width: 1280px;
+    margin: auto;
+    position: relative;
+    top: -50px;
+}
+
+.middle_4{
+    flex: 1;
+    top: 652px;
+    left: 320px;
+    width: 280px;
+    height: 100px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    text-align: center;
+    border-bottom: 12px solid #dcf1fb; padding: 0 0 0 0.2em;
+    
+}
+.middle_4 > div{
+    margin-top: 25px;
+}
+.middle_4:not(:first-child) > div{
+    border-left: 2px solid blue;
+}
+
+.middle_text{
+    text-align: center;
+}
+
+.middle_text > h1{
+    font-family: 'Crimson Pro', serif;
+}
+.middle_text > h3{
+    font-family: 'Nanum Myeongjo', serif;
+}
+
+.middle_third{
+    display: flex;
+    text-align: center;
+    width: 1280px;
+    margin: auto;
+    padding-top: 30px;
+}
+.middle_third_3{
+    top: 967px;
+    left: 319px;
+    width: 413px;
+    height: 302px;
+    background-color: white;
+    margin: 30px;
+}
+.middle_third_3 > div{
+    padding-top: 40px;
+}
+
+.middle_third_3> div >div{
+    padding-top: 15px;
+
+}
+
+
+.MORE{
+    width:100px;
+    height: 30px;
+    background: #2F7AF4;
+    color: #fff;
+    font-size: 20px;
+    line-height: 30px;
+    margin:25px auto;
+  
+}
+
+.intro_Fourth{
+    background-image:url("image/contact.png");
+    width: 100%;
+    height: 500px;
+    /* 아래 세줄코드는 배경이미지를 조정하여 화면에 맞게 배열해준다 */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.intro_Fifth{
+    background-color: #1F1F1F;
+    width: 100%;
+    height: 244px;
+}
+
+.third_text > h1{
+    font-family: 'Crimson Pro', serif;
+}
+.third_text > h3{
+    font-family: 'Nanum Myeongjo', serif;
+}
+
+.third{
+    text-align: center;
+    padding-top: 30px;
+}
+.food{
+    padding-top: 20px;
+}
+
+.foodimg{
+    float: left;
+}
+.title_text{
+    float: left;
 }
