@@ -84,7 +84,7 @@
 .intro_third{
     background-color: white;
     width: 100%;
-    height: 659px;
+    height: 550px;
 }
 
 .middle {
@@ -186,13 +186,65 @@
     text-align: center;
     padding-top: 30px;
 }
-.food{
-    padding-top: 20px;
+.service {
+    width:1280px;
+    display: flex;
+    margin: auto;
+    height:427px;
+  }
+
+  
+  .service > .contents2 {
+    padding: 20px;
+  }
+  .service > .contents2 > h2{
+    margin-bottom: 27px;
+  }
+  
+
+.intro_Fourth_text > ul{
+    display: flex;
+    padding-top: 138px;
+}
+.intro_Fourth_text > ul > li{
+    flex: 1;
+    text-align: center;
+}
+.intro_Fourth_text > ul > li >h1,
+.intro_Fourth_text > ul > li > div{
+    color: white;
+}
+.more2{
+    width:220px;
+    height:40px;
+    border: 1px solid #fff;
+    color: #fff;
+    line-height: 40px;
+    cursor: pointer;
+    margin:16px auto;
 }
 
-.foodimg{
-    float: left;
+.logo{
+    width: 118px;
+    height: 118px;
 }
-.title_text{
-    float: left;
+
+.intro_Fifth_text > ul >li{
+    display: flex;
+    padding-top: 50px;
+    
+}
+
+.intro_Fifth_text > ul >li >:first-child{
+    flex: 3;
+    font-size: 50px;
+    text-align: center;
+    padding-top: 20px;
+    color: white;
+
+}
+
+.intro_Fifth_text > ul >li >:last-child{
+    flex: 9;
+    color: white;
 }
