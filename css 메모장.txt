@@ -1,0 +1,2 @@
+<link rel="stylesheet"  href="css경로"> 항상 먼저 head 부분에 선언해준다.
+
