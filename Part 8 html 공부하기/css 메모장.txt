@@ -1,0 +1,33 @@
+<link rel="stylesheet"  href="css경로"> 항상 먼저 head 부분에 선언해준다.
+
+------------------------------
+- 글꼴 관련 속성
+font-family : 글꼴 종류를 지정한다.
+font-size : 글자 크기를지정합니다.
+font-style : 글자를 이탤릭체로 표시할지 지정한다.
+font-weight : 글자의 굵기를 지정한다.
+------------------------------
+- 텍스트 스타일 속성
+color : 글자색을 지정한다.
+text-decoration : 텍스트를 밑줄이나 취소선을 표시할지 여부를 지정한다.
+text-transform : 텍스트전체 또는 첫글자를 대문자로 표시한다.
+text-shadow : 텍스트에 그림자를 추가한다.
+letter-spacing : 글자 사이의 간격을 지정한다.
+word-spacing : 단어 사이의 간격을 지정한다.
+text-aline : 텍스트 정렬 방법을 지정한다.
+line-height : 줄 간격을 조절한다.
+---------------------------------
+- 박스 모델
+실제 콘텐츠 영역, 패딩(padding), 박스의 테두리(border), 마진(margin)등의 요소로 구분됨
+
+- border-style 속성 : 속성에 따라 테두리 스타일을 지정한다.
+- border-width : 테두리 두께 지정
+- border-color : 테두리 생상 지정
+- border 속성 : 테두리 스타일과 두께, 색상 등을 묶어 표기
+
+- margin 속성 : 현재 요소 주변의 여백, 요소와 요소 간의 간격 조절가능
+- margin 속성을 사용해 가운데 정렬하기 
+ * 배치할 요소의 너비값이 정해져 있어야 한다.
+ * margin-left 와 margin-right가 auto로 지정되야 한다.
+
+ 
