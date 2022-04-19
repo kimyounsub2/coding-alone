@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>조건문</title>
+</head>
+<body>
+    <!-- 예제1  if문-->
+    <script>
+        var userNumber = prompt("숫자를 입력해 주세요.");
+
+        if(userNumber !== null) {
+            if(userNumber % 3 === 0 ){
+                alert("3의 배수입니다.");
+            }
+            else{
+                alert("3의 배수가 아닙니다.");
+            }
+        }
+    </script>
+    <!-- 예제2  if문-->
+    <script>
+        var NumberOne = prompt("숫자를 입력해 주세요.");
+        var NumberTwo = prompt("숫자를 입력해 주세요.");
+
+        if(NumberOne !== null && NumberTwo !== null) {
+            if(NumberOne < 10 || NumberTwo < 10){
+                alert("둘중에 하나가 10보다 적습니다 .");
+            }
+            else{
+                alert("10보다 작은 숫자는 없습니다.")
+            }
+        }
+    </script>
+    <!-- 예제3 switch 문-->
+    <script>
+        var session = prompt("관심 세션을 선택해주세요. 1-마케팅, 2-개발, 3-디자인");
+
+        switch (session){
+            case "1" : document.write("<p>마케팅 세션은<strong>201호</strong>에서 진행됩니다.</p>")
+                break;
+            case "2" : document.write("<p>개발 세션은<strong>203호</strong>에서 진행됩니다.</p>")
+                break;
+            case "3" : document.write("<p>디자인 세션은<strong>205호</strong>에서 진행됩니다.</p>")
+                break;
+            default: alert("잘못입력했습니다.");
+        }
+    </script>
+</body>
+</html>
