@@ -28,7 +28,6 @@ const movingItem = {
 };
 
 
-
 init()
 
 // functons
@@ -62,9 +61,23 @@ function renderBlocks(){
     BLOCKS[type][direction].forEach(block=>{
         const x = block[0] + left;
         const y = block[1] + top;
-        const target = playground.childNodes[y].childNodes[0].childNodes[x];
-        target.classList.add(type, "moving")
+        //3항 연산자 : const xxx = 조건? 참일 경우:거짓일 경우 (조건이 오고 참일경우 그리고 거짓일 경우 변수에 담을수 있다.)
+        const target = playground.childNodes[y] ? playground.childNodes[y].childNodes[0].childNodes[x] : null;// 세로가장 마지막값을 null지정
+        const isAvailable = checkEmpty(target);
+        if(isAvailable){
+            target.classList.add(type, "moving")
+        } else{
+            tempMovingItem = {...movingItem}
+            renderBlocks()
+        }
+        
     })
+}
+function checkEmpty(target){
+    if(!target){
+        return false;
+    }
+    return true;
 }
 
 function moveBlock(moveType, amount){
@@ -80,6 +93,10 @@ document.addEventListener("keydown", e =>{
             break;
         case 37:// 왼쪽 키코드가 37이다.
             moveBlock("left", -1);
+            break;
+        case 40:// 아래 키코드가 40이다.
+            moveBlock("top",1);
+            break;
         default:
             break;
     }
