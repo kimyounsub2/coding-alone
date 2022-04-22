@@ -1,6 +1,9 @@
+//import BLOCKS from ".Part 8 html 공부하기/홈페이지 만들기 4/block.js"
+
 //dom
 const playground = document.querySelector(".playground > ul");
-
+const gameText = document.querySelector(".game-text");
+const scoreDisplay = document.querySelector(".score");
 // Setting
 const GAME_ROWS = 20;
 const GAME_COLS = 10;
@@ -12,19 +15,50 @@ let downInterval;
 let tempMovingItem;
 
 const BLOCKS = {
-    tree: [ // tree는 모형을 돌렸을때 모양을 의미하기 위해 임의로 선언함
+    tree: [ // ㅗ의 모형을 여러방향으로 만들기 위해
         [[2,1],[0,1],[1,0],[1,1]],
-        [],
-        [],
-        [],
-    ]
+        [[1,2],[0,1],[1,0],[1,1]],
+        [[1,2],[0,1],[2,1],[1,1]],
+        [[2,1],[1,2],[1,0],[1,1]],
+    ],
+    square: [ //ㅁ모양
+        [[0,0],[0,1],[1,0],[1,1]],
+        [[0,0],[0,1],[1,0],[1,1]],
+        [[0,0],[0,1],[1,0],[1,1]],
+        [[0,0],[0,1],[1,0],[1,1]],
+    ],
+    bar: [ //ㅡ모양
+        [[1,0],[2,0],[3,0],[4,0]],
+        [[2,-1],[2,0],[2,1],[2,2]],
+        [[1,0],[2,0],[3,0],[4,0]],
+        [[2,-1],[2,0],[2,1],[2,2]],
+    ],
+    zee: [ // Z 모양
+        [[0,0],[1,0],[1,1],[2,1]],
+        [[0,1],[1,0],[1,1],[0,2]],
+        [[0,1],[1,1],[1,2],[2,2]],
+        [[2,0],[2,1],[1,1],[1,2]],
+    ],
+    elLeft: [ 
+        [[0,0],[0,1],[1,1],[2,1]],
+        [[1,0],[1,1],[1,2],[0,2]],
+        [[0,1],[1,1],[2,1],[2,2]],
+        [[1,0],[2,0],[1,1],[1,2]],
+    ],
+    elRight: [ 
+        [[1,0],[2,0],[1,1],[1,2]],
+        [[0,0],[0,1],[1,1],[2,1]],
+        [[0,2],[1,0],[1,1],[1,2]],
+        [[0,1],[1,1],[2,1],[2,2]],
+    ],    
+    
 }
 
 const movingItem = {
-    type:"tree",
-    direction: 0, // 블록을 좌우로 움직일때 좌표를 구하기 위해
+    type:"",
+    direction: 3, // 블록을 좌우로 움직일때 좌표를 구하기 위해
     top: 0,
-    left:3,
+    left:0,
 };
 
 
@@ -36,7 +70,7 @@ function init(){
     for (let i=0; i < GAME_ROWS; i++){
         prependNewLine()
     }
-    renderBlocks()
+    generateNewBlock()
 }
 
 
@@ -51,14 +85,14 @@ function prependNewLine(){
     playground.prepend(li)
 
 }
-function renderBlocks(){
+function renderBlocks(moveType = ""){
     const {type, direction, top, left} = tempMovingItem;
     const movingBlocks = document.querySelectorAll(".moving")
     movingBlocks.forEach(moving =>{
         moving.classList.remove(type,"moving");
     })
 
-    BLOCKS[type][direction].forEach(block=>{
+    BLOCKS[type][direction].some(block=>{
         const x = block[0] + left;
         const y = block[1] + top;
         //3항 연산자 : const xxx = 조건? 참일 경우:거짓일 경우 (조건이 오고 참일경우 그리고 거짓일 경우 변수에 담을수 있다.)
@@ -68,13 +102,72 @@ function renderBlocks(){
             target.classList.add(type, "moving")
         } else{
             tempMovingItem = {...movingItem}
-            renderBlocks()
+            if(moveType === "retry"){
+                clearInterval(downInterval)
+                showGameoverText()
+            }
+            setTimeout(()=>{
+                renderBlocks("retry");
+                if(moveType ==="top") {
+                    seizeBlock(); // 
+                }
+            },0)
+            return true;
         }
-        
     })
+    movingItem.left = left;
+    movingItem.top = top;
+    movingItem.direction = direction;
 }
+function seizeBlock(){
+    const movingBlocks = document.querySelectorAll(".moving")
+    movingBlocks.forEach(moving =>{
+        moving.classList.remove("moving");
+        moving.classList.add("seized")
+    })
+    checkMatch()
+}
+function checkMatch(){
+    const childNodes = playground.childNodes;
+    childNodes.forEach(child=>{
+        let matched = true;
+        child.children[0].childNodes.forEach(li=>{
+            if(!li.classList.contains("seized")){
+                matched = false;
+            }
+        })
+        if(matched){
+            child.remove();
+            prependNewLine()
+            score++;
+            scoreDisplay.innerText = score;
+        }
+    })
+    generateNewBlock()
+}
+
+
+
+function generateNewBlock(){
+
+    clearInterval(downInterval);
+    downInterval = setInterval(()=>{
+        moveBlock("top",1)
+    },duration)
+
+
+    const blockArray = Object.entries(BLOCKS);
+    const randomIndex = Math.floor(Math.random() * blockArray.length)
+    movingItem.type = blockArray[randomIndex][0]
+    movingItem.top = 0;
+    movingItem.left = 3;
+    movingItem.direction = 0;
+    tempMovingItem = { ...movingItem};
+    renderBlocks()
+}
+
 function checkEmpty(target){
-    if(!target){
+    if(!target || target.classList.contains("seized")){
         return false;
     }
     return true;
@@ -82,8 +175,23 @@ function checkEmpty(target){
 
 function moveBlock(moveType, amount){
     tempMovingItem[moveType] += amount;
+    renderBlocks(moveType)
+}
+function changeDirection(){
+    const direction = tempMovingItem.direction;
+    direction === 3 ? tempMovingItem.direction = 0 : tempMovingItem.direction += 1;
     renderBlocks()
 }
+function dropBlock(){
+    clearInterval(downInterval);
+    downInterval = setInterval(()=>{
+        moveBlock("top",1)
+    },10)
+}
+function showGameoverText(){
+    gameText.style.display = "flex"
+}
+
 
 //event handing 키를 눌렀을때 행동
 document.addEventListener("keydown", e =>{
@@ -96,6 +204,12 @@ document.addEventListener("keydown", e =>{
             break;
         case 40:// 아래 키코드가 40이다.
             moveBlock("top",1);
+            break;
+        case 38: // direction을 바꿀때 UP키 키코드는 38이다
+            changeDirection();
+            break;
+        case 32://스페이스바 코드가 32이다
+            dropBlock();
             break;
         default:
             break;
